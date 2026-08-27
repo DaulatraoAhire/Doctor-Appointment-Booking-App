@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'doctor_details_screen.dart';
+import 'my_appointments_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -29,11 +30,28 @@ class HomeScreen extends StatelessWidget {
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
         actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.notifications_none, color: Colors.black),
-          ),
-        ],
+  IconButton(
+    onPressed: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const MyAppointmentsScreen(),
+        ),
+      );
+    },
+    icon: const Icon(
+      Icons.calendar_month,
+      color: Colors.black,
+    ),
+  ),
+  IconButton(
+    onPressed: () {},
+    icon: const Icon(
+      Icons.notifications_none,
+      color: Colors.black,
+    ),
+  ),
+],
       ),
 
       body: SingleChildScrollView(
