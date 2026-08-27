@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'doctor_details_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -204,10 +205,21 @@ class HomeScreen extends StatelessWidget {
                           ),
                         ),
 
-                        ElevatedButton(
-                          onPressed: () {},
-                          child: const Text('View'),
-                        ),
+                       ElevatedButton(
+  onPressed: () {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => DoctorDetailsScreen(
+          doctorName: doctor['name']!,
+          speciality: doctor['speciality']!,
+          rating: doctor['rating']!,
+        ),
+      ),
+    );
+  },
+  child: const Text('View'),
+),
                       ],
                     ),
                   ),
