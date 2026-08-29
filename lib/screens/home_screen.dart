@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'doctor_details_screen.dart';
 import 'my_appointments_screen.dart';
+import 'search_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   final List<Map<String, dynamic>> categories = const [
     {'name': 'Dentist', 'icon': Icons.medical_services_outlined},
-    {'name': 'Cardiologist', 'icon': Icons.favorite_outline},
-    {'name': 'Dermatologist', 'icon': Icons.face_outlined},
     {'name': 'Neurologist', 'icon': Icons.psychology_outlined},
   ];
 
@@ -44,6 +43,7 @@ class HomeScreen extends StatelessWidget {
       color: Colors.black,
     ),
   ),
+ 
   IconButton(
     onPressed: () {},
     icon: const Icon(
@@ -75,18 +75,29 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: 20),
 
             // Search
-            TextField(
-              decoration: InputDecoration(
-                hintText: 'Search doctors...',
-                prefixIcon: const Icon(Icons.search),
-                filled: true,
-                fillColor: Colors.white,
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
-                  borderSide: BorderSide.none,
-                ),
-              ),
-            ),
+           GestureDetector(
+  onTap: () {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const SearchScreen(),
+      ),
+    );
+  },
+  child: TextField(
+    enabled: false,
+    decoration: InputDecoration(
+      hintText: 'Search doctors...',
+      prefixIcon: const Icon(Icons.search),
+      filled: true,
+      fillColor: Colors.white,
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(15),
+        borderSide: BorderSide.none,
+      ),
+    ),
+  ),
+),
 
             const SizedBox(height: 25),
 
