@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'doctor_details_screen.dart';
 import 'my_appointments_screen.dart';
 import 'search_screen.dart';
+import 'profile_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -29,29 +30,32 @@ class HomeScreen extends StatelessWidget {
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
         actions: [
-  IconButton(
-    onPressed: () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const MyAppointmentsScreen(),
-        ),
-      );
-    },
-    icon: const Icon(
-      Icons.calendar_month,
-      color: Colors.black,
-    ),
-  ),
- 
-  IconButton(
-    onPressed: () {},
-    icon: const Icon(
-      Icons.notifications_none,
-      color: Colors.black,
-    ),
-  ),
-],
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ProfilePage()),
+              );
+            },
+            icon: const Icon(Icons.person, color: Colors.black),
+          ),
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const MyAppointmentsScreen(),
+                ),
+              );
+            },
+            icon: const Icon(Icons.calendar_month, color: Colors.black),
+          ),
+
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.notifications_none, color: Colors.black),
+          ),
+        ],
       ),
 
       body: SingleChildScrollView(
@@ -75,29 +79,27 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: 20),
 
             // Search
-           GestureDetector(
-  onTap: () {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const SearchScreen(),
-      ),
-    );
-  },
-  child: TextField(
-    enabled: false,
-    decoration: InputDecoration(
-      hintText: 'Search doctors...',
-      prefixIcon: const Icon(Icons.search),
-      filled: true,
-      fillColor: Colors.white,
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(15),
-        borderSide: BorderSide.none,
-      ),
-    ),
-  ),
-),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SearchScreen()),
+                );
+              },
+              child: TextField(
+                enabled: false,
+                decoration: InputDecoration(
+                  hintText: 'Search doctors...',
+                  prefixIcon: const Icon(Icons.search),
+                  filled: true,
+                  fillColor: Colors.white,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                    borderSide: BorderSide.none,
+                  ),
+                ),
+              ),
+            ),
 
             const SizedBox(height: 25),
 
@@ -234,21 +236,21 @@ class HomeScreen extends StatelessWidget {
                           ),
                         ),
 
-                       ElevatedButton(
-  onPressed: () {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => DoctorDetailsScreen(
-          doctorName: doctor['name']!,
-          speciality: doctor['speciality']!,
-          rating: doctor['rating']!,
-        ),
-      ),
-    );
-  },
-  child: const Text('View'),
-),
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => DoctorDetailsScreen(
+                                  doctorName: doctor['name']!,
+                                  speciality: doctor['speciality']!,
+                                  rating: doctor['rating']!,
+                                ),
+                              ),
+                            );
+                          },
+                          child: const Text('View'),
+                        ),
                       ],
                     ),
                   ),
